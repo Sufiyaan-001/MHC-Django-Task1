@@ -1,0 +1,32 @@
+{% extends 'elec_base.html' %}
+{% block title %}{% if elec %}Edit{% else %}Add{% endif %} electronics{% endblock %}
+{% block content %}
+<h1>{% if elec %}Edit{% else %}Add{% endif %} electronics</h1>
+<form method="post" class="row g-3">
+ {% csrf_token %}
+ <div class="col-md-6">
+ <label for="Name" class="form-label">Brand Name</label>
+ <input type="text" name="Name" class="form-control" value="{{elec.Name}}">
+ </div>
+ <div class="col-md-6">
+ <label for="Type" class="form-label">Type</label>
+ <input type="text" name="Type" class="form-control" value="{{elec.Type }}">
+ </div>
+ <div class="col-md-6">
+    <label for="Description" class="form-label">Description</label>
+    <input type="Description" name="Description" class="form-control" value="{{elec.Description }}">
+    </div>
+ <div class="col-md-6">
+ <label for="Rating" class="form-label">Rating</label>
+ <input type="text" name="Rating" class="form-control" value="{{elec.Rating }}">
+ </div>
+ <div class="col-md-6">
+ <label for="Price" class="form-label">Price</label>
+ <input type="number" name="Price" class="form-control" value="{{elec.Price}}">
+ </div>
+ <div class="col-12">
+    <button type="submit" class="btn btn-success">Save</button>
+ <a href="{% url 'ele-data' %}" class="btn btn-secondary">Cancel</a>
+ </div>
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'groc_base.html' %}
+{% block title %}{% if groces %}Edit{% else %}Add{% endif %} Groceries{% endblock %}
+{% block content %}
+<h1>{% if groces %}Edit{% else %}Add{% endif %} Groceries</h1>
+<form method="post" class="row g-3">
+ {% csrf_token %}
+ <div class="col-md-6">
+ <label for="Name" class="form-label">Name</label>
+ <input type="text" name="Name" class="form-control" value="{{groces.Name}}">
+ </div>
+ <div class="col-md-6">
+ <label for="Type" class="form-label">Type</label>
+ <input type="text" name="Type" class="form-control" value="{{groces.Type }}">
+ </div>
+ <div class="col-md-6">
+    <label for="Quality" class="form-label">Quality</label>
+    <input type="Quality" name="Quality" class="form-control" value="{{groces.Quality }}">
+    </div>
+    <div class="col-md-6">
+       <label for="Quantity" class="form-label">Quantity(In kgs)</label>
+       <input type="Quantity" name="Quantity" class="form-control" value="{{groces.Quantity }}">
+       </div>
+ <div class="col-md-6">
+ <label for="Vendor" class="form-label">Vendor</label>
+ <input type="text" name="Vendor" class="form-control" value="{{groces.Vendor }}">
+ </div>
+ <div class="col-md-6">
+ <label for="Price" class="form-label">Price</label>
+ <input type="number" name="Price" class="form-control" value="{{groces.Price}}">
+ </div>
+ <div class="col-12">
+    <button type="submit" class="btn btn-success">Save</button>
+ <a href="{% url 'grocs-data' %}" class="btn btn-secondary">Cancel</a>
+ </div>
+</form>
+{% endblock %}

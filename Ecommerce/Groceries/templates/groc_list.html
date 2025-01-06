@@ -1,0 +1,50 @@
+{% extends 'groc_base.html' %}
+{% block title %}Groceries List{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-end mb-3">
+    <div class="col text-start">
+        <form method="GET" class="d-flex">
+            <input type="text" name="q" class="form-control me-2" placeholder="Search Groceries..." value="{{ request.GET.q }}">
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
+    </div><p>&nbsp;&nbsp;</p>
+    <a href="{% url 'grocs-add' %}" class="btn btn-primary">Add New Groceries</a>
+</div>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Groceries List</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" style="background: white;">
+                <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Quality</th>
+                    <th>Quantity(In kgs)</th>
+                    <th>Vendor</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grc in groces %}
+<tr>
+    <td>{{ grc.Name }}</td>
+    <td>{{ grc.Type }}</td>
+    <td>{{ grc.Quality }}</td>
+    <td>{{ grc.Quantity }}</td>
+    <td>{{ grc.Vendor }}</td>
+    <td>{{ grc.Price }}</td>
+    <td>
+        <a href="{% url 'grocs-edit' grc.pk %}">Edit</a>  |  
+        <a href="{% url 'grocs-delete' grc.pk %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+
+            </tbody>
+        </table>
+        <div class="col">
+            <button type="button" class="btn btn-success" onclick="window.location.href='{% url 'home' %}';">Go back to Home</button>
+        </div>
+    </div>
+    {% endblock %}

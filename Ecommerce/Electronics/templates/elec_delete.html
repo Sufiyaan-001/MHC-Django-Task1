@@ -1,0 +1,11 @@
+{% extends 'elec_base.html' %}
+{% block title %}Delete Electronics{% endblock %}
+{% block content %}
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete <strong>{{ elec.Name }}</strong>?</p>
+<form method="post">
+ {% csrf_token %}
+ <button type="submit" class="btn btn-danger">Yes, Delete</button>
+ <a href="{% url 'ele-data' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

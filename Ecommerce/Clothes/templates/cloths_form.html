@@ -1,0 +1,32 @@
+{% extends 'cloths_base.html' %}
+{% block title %}{% if cloths %}Edit{% else %}Add{% endif %} clothes{% endblock %}
+{% block content %}
+<h1>{% if cloths %}Edit{% else %}Add{% endif %} clothes</h1>
+<form method="post" class="row g-3">
+ {% csrf_token %}
+ <div class="col-md-6">
+ <label for="Name" class="form-label">Brand Name</label>
+ <input type="text" name="Name" class="form-control" value="{{cloths.Name}}">
+ </div>
+ <div class="col-md-6">
+ <label for="Type" class="form-label">Type</label>
+ <input type="text" name="Type" class="form-control" value="{{cloths.Type }}">
+ </div>
+ <div class="col-md-6">
+    <label for="Shipping_agent" class="form-label">Shipping Agent</label>
+    <input type="Shipping_agent" name="Shipping_agent" class="form-control" value="{{cloths.Shipping_agent }}">
+    </div>
+ <div class="col-md-6">
+ <label for="Size" class="form-label">Size</label>
+ <input type="text" name="Size" class="form-control" value="{{cloths.Size }}">
+ </div>
+ <div class="col-md-6">
+ <label for="Price" class="form-label">Price</label>
+ <input type="number" name="Price" class="form-control" value="{{cloths.Price}}">
+ </div>
+ <div class="col-12">
+    <button type="submit" class="btn btn-success">Save</button>
+ <a href="{% url 'cloth-data' %}" class="btn btn-secondary">Cancel</a>
+ </div>
+</form>
+{% endblock %}

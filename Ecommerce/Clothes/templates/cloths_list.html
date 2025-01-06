@@ -1,0 +1,49 @@
+{% extends 'cloths_base.html' %}
+{% block title %}Clothes List{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-end mb-3">
+    <div class="col text-start">
+        <form method="GET" class="d-flex">
+            <input type="text" name="q" class="form-control me-2" placeholder="Search Clothes..." value="{{ request.GET.q }}">
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
+    </div><p>&nbsp;&nbsp;</p>
+    <a href="{% url 'cloth-add' %}" class="btn btn-primary">Add New Clothes</a>
+</div>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Clothes List</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" style="background: white;">
+                <thead class="table-light">
+                <tr>
+                    <th>Brand Name</th>
+                    <th>Type</th>
+                    <th>Shipping Agent</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for clt in cloths %}
+<tr>
+    <td>{{ clt.Name }}</td>
+    <td>{{ clt.Type }}</td>
+    <td>{{ clt.Shipping_agent }}</td>
+    <td>{{ clt.Size }}</td>
+    <td>{{ clt.Price }}</td>
+    <td>
+        <a href="{% url 'cloth-edit' clt.pk %}">Edit</a>  |  
+        <a href="{% url 'cloth-delete' clt.pk %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+
+            </tbody>
+        </table>
+        
+        <div class="col">
+            <button type="button" class="btn btn-success" onclick="window.location.href='{% url 'home' %}';">Go back to Home</button>
+        </div>
+    </div>
+    {% endblock %}

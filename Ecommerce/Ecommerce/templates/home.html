@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/0f/61/c6/0f61c6ed1d7531a0300363288071d703.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+        }
+        .button-container {
+            height: 50vh; /* Full height */
+            display: flex; /* Flexbox for alignment */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+    </style>
+</head>
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+    <a class="navbar-brand">Ecommerce Management System</a>
+    </div>
+    </nav>
+    <div class="container button-container">
+        <div class="row w-100 text-center">
+            <!-- Clothes Button -->
+            <div class="col">
+                <button type="button" class="btn btn-success" onclick="window.location.href='{% url 'cloth-data' %}';">Go to Clothes</button>
+            </div>
+            <!-- Electronics Button -->
+            <div class="col">
+                <button type="button" class="btn btn-success" onclick="window.location.href='{% url 'ele-data' %}';">Go to Electronics</button>
+            </div>
+            <!-- Groceries Button -->
+            <div class="col">
+                <button type="button" class="btn btn-success" onclick="window.location.href='{% url 'grocs-data' %}';">Go to Groceries</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
